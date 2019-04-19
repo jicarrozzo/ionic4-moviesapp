@@ -1,0 +1,30 @@
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Lastest movies</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-slideshow-backdrop [movies]="moviesFeature" ></app-slideshow-backdrop>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Billboard</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-slideshow-poster [movies]="moviesFeature" ></app-slideshow-poster>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Most populars</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <app-slideshow-pairs [movies]="moviesPopular" (getMore)="getmore($event)" ></app-slideshow-pairs>
+
+</ion-content>
