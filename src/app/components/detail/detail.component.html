@@ -1,3 +1,86 @@
-<p>
-  detail works!
-</p>
+<ion-content *ngIf="detail">
+  <ion-label class="titulo">
+    <h1> {{ detail.title }} </h1>
+  </ion-label>
+  <img [src]="detail.backdrop_path | movieposter" *ngIf="detail.backdrop_path">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="poster-detalle-sobre">
+        <ion-card class="poster">
+            <img [src]="detail.poster_path | movieposter" class="poster" *ngIf="detail.poster_path">  
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon slot="start" name="thumbs-up" color="primary"></ion-icon>
+          <ion-label>Rating</ion-label>
+          <ion-note slot="end" color="primary">
+            {{ detail.vote_average }}
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="contacts" color="primary"></ion-icon>
+          <ion-label>Votes</ion-label>
+          <ion-note slot="end" color="primary">
+            {{ detail.vote_count }}
+          </ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-label>{{ detail.overview | slice: 0:showmore }}</ion-label>
+        <ion-label *ngIf="detail.overview.length >150 && showmore ==150" (click)="showmore =5000" color="tertiary">
+          ...Read more</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-chip *ngFor="let gen of detail.genres" color="primary">
+          <ion-label>{{ gen.name }}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-label>Actors/Actresses</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides [options]="slidesCastOpt">
+    <ion-slide *ngFor="let cast of castcrew?.cast">
+      <ion-card class="card-actor">
+        <img [src]="cast.profile_path | castprofile">
+        <ion-label class="actor-name">{{ cast.name }}</ion-label>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+        <ion-label>Go back</ion-label>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="favorite()">
+        <ion-label>Fovorite</ion-label>
+        <ion-icon slot="end" name="star-outline" *ngIf="!isfavorite"></ion-icon>
+        <ion-icon slot="end" name="star" color="danger" *ngIf="isfavorite"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

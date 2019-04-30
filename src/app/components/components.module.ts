@@ -8,6 +8,7 @@ import { SlideshowPairsComponent } from './slideshow-pairs/slideshow-pairs.compo
 import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
+	entryComponents: [ DetailComponent ],
 	declarations: [ SlideshowBackdropComponent, SlideshowPosterComponent, SlideshowPairsComponent, DetailComponent ],
 	imports: [ IonicModule, PipesModule, CommonModule ],
 	exports: [ SlideshowBackdropComponent, SlideshowPosterComponent, SlideshowPairsComponent, DetailComponent ]

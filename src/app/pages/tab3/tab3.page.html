@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content></ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Favorites movies</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-slides [options]="slidesOpts" class="empty-slider" *ngIf="moviesFavorites.length===0">
+    <ion-slide>
+      <h3>You have no favorites yet!</h3>
+    </ion-slide>
+  </ion-slides>
+
+  <div *ngFor="let mg of moviesByGenre">
+    <ion-grid fixed *ngIf="mg.movies.length >0">
+      <ion-row>
+        <ion-col>{{ mg.genre.name }}</ion-col>
+      </ion-row>
+      <app-slideshow-poster [movies]="mg.movies" ></app-slideshow-poster>
+    </ion-grid>
+  </div>
+
+</ion-content>

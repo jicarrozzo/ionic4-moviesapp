@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MovieposterPipe } from './movieposter.pipe';
+import { MovieposterPipe, CastprofilePipe, FilterByImagePipe } from './movieposter.pipe';
 import { ListToPairsPipe } from './list-to-pairs.pipe';
 
 @NgModule({
-	declarations: [ MovieposterPipe, ListToPairsPipe ],
+	declarations: [ MovieposterPipe, CastprofilePipe, ListToPairsPipe, FilterByImagePipe ],
 	imports: [ CommonModule ],
-	exports: [ MovieposterPipe, ListToPairsPipe ]
+	exports: [ MovieposterPipe, CastprofilePipe, ListToPairsPipe, FilterByImagePipe ]
 })
 export class PipesModule {}

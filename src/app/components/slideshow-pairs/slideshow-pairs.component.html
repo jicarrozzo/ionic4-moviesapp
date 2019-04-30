@@ -2,8 +2,8 @@
   <ion-slide *ngFor="let moviepairs of movies | listToPairs">
     <ion-row>
       <ion-col size="12" *ngFor="let movie of moviepairs">
-        <ion-card>
-          <img [src]="movie.poster_path | movieposter" class="poster" [class.noimage]="!movie.poster_path" />
+        <ion-card class="poster" (click)="details(movie.id)">
+          <img [src]="movie.poster_path | movieposter"  [class.noimage]="!movie.poster_path" />
         </ion-card>
       </ion-col>
     </ion-row>
