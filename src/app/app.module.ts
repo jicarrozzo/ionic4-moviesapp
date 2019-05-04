@@ -20,7 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 		HttpClientModule,
 		IonicModule.forRoot(),
 		IonicStorageModule.forRoot({
-			name: 'TheMovieInspectorDB'
+			name: 'rsw.TheMovieInspectorDB'
 		}),
 		AppRoutingModule
 	],
